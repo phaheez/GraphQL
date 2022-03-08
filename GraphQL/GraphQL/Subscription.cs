@@ -1,0 +1,20 @@
+﻿using GraphQL.Models;
+using HotChocolate;
+using HotChocolate.Types;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace GraphQL.GraphQL
+{
+    public class Subscription
+    {
+        [Subscribe]
+        [Topic]
+        public Platform OnPlatformAdded([EventMessage] Platform platform)
+        {
+            return platform;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+    graphql:
+        image: ${DOCKER_REGISTRY-}graphql
+        build:
+            context: .
+            dockerfile: GraphQL/Dockerfile
+    sqlserver:
+        image: "mcr.microsoft.com/mssql/server:2019-latest"
+        environment:
+            ACCEPT_EULA: "Y"
+            MSSQL_SA_PASSWORD: "Password123456"
+            MSSQL_PID: "Developer"
+        ports:
+            - "1433:1433"
